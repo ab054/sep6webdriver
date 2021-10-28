@@ -1,5 +1,6 @@
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class StudentTest {
 
@@ -14,7 +15,7 @@ public class StudentTest {
         studentOne.graduate();
 
         //boolean isNameCorrect = studentOne.name.contentEquals("Alex"); // name == "Alex"
-        Assert.assertEquals(studentOne.name, "ALeX");
+        assertEquals(studentOne.name, "ALeX");
     }
 
     @Test
@@ -30,6 +31,6 @@ public class StudentTest {
         //boolean isNameCorrect = studentOne.name.contentEquals("Alex"); // name == "Alex"
         String expectedName = "StudentName001";
 
-        Assert.assertEquals(studentOne.name, expectedName);
+        assertEquals(studentOne.name, expectedName);
     }
 }

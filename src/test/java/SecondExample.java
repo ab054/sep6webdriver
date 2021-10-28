@@ -144,4 +144,16 @@ public class SecondExample {
             i++;
         }
     }
+
+    @Test
+    public void testArraysEx() {
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int length = numbers[3];
+        char[] chars = new char[length];
+        chars[chars.length - 1] = 'y';
+        chars[0] = 's';
+        chars[1] = 'o';
+        chars[2] = 'n';
+        System.out.println("Done!");
+    }
 }
