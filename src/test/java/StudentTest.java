@@ -29,8 +29,10 @@ public class StudentTest {
         studentOne.graduate();
 
         //boolean isNameCorrect = studentOne.name.contentEquals("Alex"); // name == "Alex"
-        String expectedName = "StudentName001";
+        String expectedName = "StudentName002";
 
         assertEquals(studentOne.name, expectedName);
+
+        assert expectedName.equals(studentOne.name) : "Expected name " + expectedName + ", for" + studentOne.name;
     }
 }
