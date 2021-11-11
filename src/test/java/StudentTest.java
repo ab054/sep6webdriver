@@ -1,31 +1,38 @@
-import org.junit.Assert;
 import org.testng.annotations.Test;
 
-public class SedanTest {
+import static org.testng.Assert.assertEquals;
+
+public class StudentTest {
 
     @Test
     public void testName() {
-        Sedan myNewCar = new Sedan("Camry", 2001, "4cyl");
-        myNewCar.turnLeft();
-        myNewCar.comfortModeDrive();
+        String testParamOne = "Alex";
+        String testParamTwo = "Barabash";
+
+        Student studentOne = new Student(testParamOne, testParamTwo);
+
+        studentOne.printName();
+        studentOne.graduate();
+
+        //boolean isNameCorrect = studentOne.name.contentEquals("Alex"); // name == "Alex"
+        assertEquals(studentOne.name, "ALeX");
     }
 
     @Test
-    public void testAnotherCar() {
-        Car justACar = new Car("Some Car", 2020, "4cyl");
+    public void testName032() {
+        String testParamOne = "StudentName001";
+        String testParamTwo = "StudentLastName001";
 
-        String drive = justACar.drive();
+        Student studentOne = new Student(testParamOne, testParamTwo);
 
-        Assert.assertTrue(drive.contentEquals("DRIVING AS A CAR"));
+        studentOne.printName();
+        studentOne.graduate();
 
-        Sedan anotherCar = new Sedan("Honda", 2002, "4cyl");
+        //boolean isNameCorrect = studentOne.name.contentEquals("Alex"); // name == "Alex"
+        String expectedName = "StudentName002";
 
-        anotherCar.comfortModeDrive();
+        assertEquals(studentOne.name, expectedName);
 
-        String comfortDriverMessage = anotherCar.drive();
-
-        boolean isEqual = comfortDriverMessage.equalsIgnoreCase("DRIVING AS A SEDAN MORE COMFORT");
-
-        Assert.assertTrue(isEqual);
+        assert expectedName.equals(studentOne.name) : "Expected name " + expectedName + ", for" + studentOne.name;
     }
 }
