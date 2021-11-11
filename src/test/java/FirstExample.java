@@ -69,8 +69,8 @@ public class FirstExample {
     }
 
     public void loginStep(String loginValue, String passwordValue){
-        System.out.println("I typed login");
-        System.out.println("I typed password");
+        System.out.println("I typed login:" + loginValue);
+        System.out.println("I typed password:" + passwordValue);
         System.out.println("I clicked login button");
     }
 
