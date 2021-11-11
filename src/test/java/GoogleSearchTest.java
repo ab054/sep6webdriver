@@ -42,4 +42,13 @@ public class GoogleSearchTest {
 
         driver.get("https://google.com/");
     }
+
+    @Test
+    public void testFirefoxWin() {
+        System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+
+        WebDriver driver = new FirefoxDriver();
+
+        driver.get("https://google.com/");
+    }
 }
