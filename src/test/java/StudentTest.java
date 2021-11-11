@@ -32,5 +32,7 @@ public class StudentTest {
         String expectedName = "StudentName001";
 
         assertEquals(studentOne.name, expectedName);
+
+        assert expectedName.equals(studentOne.name) : "Expected name " + expectedName + ", for" + studentOne.name;
     }
 }
