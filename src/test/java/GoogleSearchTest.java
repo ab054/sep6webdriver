@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 public class GoogleSearchTest {
@@ -31,5 +32,14 @@ public class GoogleSearchTest {
         int parsedInteger = Integer.parseInt(replacedComma);
 
         Assert.assertTrue(parsedInteger > 1000);
+    }
+
+    @Test
+    public void testFirefox() {
+        System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriverAarch64");
+
+        WebDriver driver = new FirefoxDriver();
+
+        driver.get("https://google.com/");
     }
 }
