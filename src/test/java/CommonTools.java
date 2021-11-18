@@ -12,7 +12,7 @@ public class CommonTools {
     }
 
     public static int parseResults(WebElement element) {
-        String wholeStatsText = element.getText();
-        return extractInteger(wholeStatsText);
+        String elementText = element.getText();
+        return extractInteger(elementText);
     }
 }
