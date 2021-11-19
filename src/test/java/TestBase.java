@@ -3,15 +3,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class TestBase {
 
     WebDriver driver;
 
+
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(String browser) {
+    public void suiteSetup(@Optional("Chrome") String browser) {
         String os = System.getProperty("os.name");
 
         if (os.contains("Mac")) {
