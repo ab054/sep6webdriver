@@ -13,7 +13,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(@Optional("Chrome") String browser) {
+    public void suiteSetup(@Optional("Firefox") String browser) {
         String os = System.getProperty("os.name");
 
         if (os.contains("Mac")) {
