@@ -57,8 +57,8 @@ public class ListsAndArrays {
             }
         }
 
-        Assert.assertTrue(map.size() == 6);
-
-
+        Assert.assertEquals(map.size(), 8);
+        boolean hIsOnce = map.get('h').equals(1);
+        Assert.assertTrue(hIsOnce);
     }
 }
