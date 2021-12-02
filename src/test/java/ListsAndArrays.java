@@ -50,15 +50,14 @@ public class ListsAndArrays {
         for (Character each : sentence.toLowerCase().toCharArray()) {
             if (map.containsKey(each)) {
                 int timesPresented = map.get(each);
-                int newValue = timesPresented + 1;
-                map.replace(each, timesPresented, newValue);
+                map.replace(each, timesPresented, ++timesPresented);
             } else {
                 map.put(each, 1);
             }
         }
 
         Assert.assertEquals(map.size(), 8);
-        boolean hIsOnce = map.get('h').equals(1);
-        Assert.assertTrue(hIsOnce);
+
+        Assert.assertEquals(map.get('l').toString(), "3");
     }
 }
