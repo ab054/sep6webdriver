@@ -58,6 +58,6 @@ public class ListsAndArrays {
 
         Assert.assertEquals(map.size(), 8);
 
-        Assert.assertEquals(map.get('l').toString(), "3");
+        Assert.assertEquals(map.get('l').intValue(), 3);
     }
 }
