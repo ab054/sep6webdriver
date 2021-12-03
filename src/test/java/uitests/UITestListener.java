@@ -9,6 +9,7 @@ import org.testng.internal.Utils;
 import org.testng.log4testng.Logger;
 
 import java.io.File;
+import java.sql.Timestamp;
 
 
 public class UITestListener extends TestListenerAdapter {
@@ -29,8 +30,9 @@ public class UITestListener extends TestListenerAdapter {
     }
 
     private String buildScreenshotPath(ITestResult iTestResult) {
-        String classSubfolder = "/" + iTestResult.getTestClass().getName();
+        String classSubfolder = "/" + iTestResult.getTestClass().getName().replace(".", "/");
         String testSubFolder = "/" + iTestResult.getMethod().getMethodName();
+        String fileName = "/image" + new Timestamp(System.currentTimeMillis()) + ".png";
 
 
         return new StringBuilder()
@@ -38,6 +40,6 @@ public class UITestListener extends TestListenerAdapter {
                 .append("/screenshots")
                 .append(classSubfolder)
                 .append(testSubFolder)
-                .append("/image.png").toString();
+                .append(fileName).toString();
     }
 }
