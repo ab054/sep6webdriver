@@ -18,13 +18,14 @@ public class UITestListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        logger.error("FAILED");
-
         driver = (WebDriver) iTestResult.getTestContext().getAttribute("driver");
 
         TakesScreenshot scrShot = (TakesScreenshot) driver;
         File file = scrShot.getScreenshotAs(OutputType.FILE);
-        Utils.copyFile(file, new File(buildScreenshotPath(iTestResult)));
+        String path = buildScreenshotPath(iTestResult);
+        Utils.copyFile(file, new File(path));
+
+        logger.error("TEST FAILED. Screenshot: " + path);
     }
 
     private String buildScreenshotPath(ITestResult iTestResult) {
