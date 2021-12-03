@@ -11,30 +11,38 @@ public class TestBase {
 
     WebDriver driver;
 
-
     @Parameters({"browser"})
+    @BeforeMethod
+    public void methodSetup(@Optional("Firefox") String browser, ITestContext context) {
+        switch (browser) {
+            case "Firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "Chrome":
+                driver = new ChromeDriver();
+                break;
+            default:
+                driver = new ChromeDriver();
+        }
+
+        context.setAttribute("driver", driver);
+    }
+
+    @AfterMethod
+    public void methodTearDown() {
+        driver.quit();
+    }
+
     @BeforeSuite
-    public void suiteSetup(@Optional("Firefox") String browser, ITestContext context) {
+    public void suiteSetup() {
         String os = System.getProperty("os.name");
 
         if (os.contains("Mac")) {
             System.setProperty("webdriver.chrome.driver", "src/test/resources/macos/m1/chromedriver4638");
             System.setProperty("webdriver.gecko.driver", "src/test/resources/macos/m1/geckodriverAarch64");
-        }
-
-        if (os.contains("Windows")) {
+        } else if (os.contains("Windows")) {
             //TODO: set chrome and geckodriver properties for windows
         }
-
-        if (browser.equalsIgnoreCase("Firefox")) {
-            driver = new FirefoxDriver();
-        }
-
-        if (browser.equalsIgnoreCase("Chrome")) {
-            driver = new ChromeDriver();
-        }
-
-        context.setAttribute("driver", driver);
     }
 
     @AfterSuite
