@@ -50,12 +50,4 @@ public class TestBase {
         driver.quit();
     }
 
-    @DataProvider(name = "strings for query")
-    public Object[][] createData1() {
-        return new Object[][]{
-                {"Portnov Computer School"},
-                {"Portnov School"},
-        };
-    }
-
 }
