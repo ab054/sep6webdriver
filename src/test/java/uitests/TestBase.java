@@ -3,8 +3,10 @@ package uitests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+@Listeners(UITestListener.class)
 public class TestBase {
 
     WebDriver driver;
@@ -12,7 +14,7 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite
-    public void suiteSetup(@Optional("Firefox") String browser) {
+    public void suiteSetup(@Optional("Firefox") String browser, ITestContext context) {
         String os = System.getProperty("os.name");
 
         if (os.contains("Mac")) {
@@ -31,6 +33,8 @@ public class TestBase {
         if (browser.equalsIgnoreCase("Chrome")) {
             driver = new ChromeDriver();
         }
+
+        context.setAttribute("driver", driver);
     }
 
     @AfterSuite

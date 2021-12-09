@@ -1,4 +1,6 @@
 # Project exclude paths
+/screenshots/
 /target/
 /.idea/
 /sep6webdriver.iml
+/screenshots/uitests/GoogleSearchTest/testName/image.png
