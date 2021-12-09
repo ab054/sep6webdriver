@@ -22,9 +22,4 @@ public class GoogleSearchTest extends TestBase {
 
         Assert.assertTrue(actualNumberOfResults > 1000);
     }
-
-    @Test
-    public void testName() {
-        Assert.assertTrue(false);
-    }
 }
