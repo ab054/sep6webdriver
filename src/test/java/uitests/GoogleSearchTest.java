@@ -13,6 +13,8 @@ public class GoogleSearchTest extends TestBase {
     // - compare that amount with expectations
     @Test(dataProvider = "strings for query")
     public void testSearchAndVerifyResults(String paramOne) {
+        int testExpectedNumber = 10000;
+
         MainPage mainPage = new MainPage(driver);
         mainPage.navigate();
         mainPage.typeQueryAndSubmit(paramOne);
@@ -20,6 +22,6 @@ public class GoogleSearchTest extends TestBase {
         ResultsPage resultsPage = new ResultsPage(driver);
         int actualNumberOfResults = resultsPage.getNumberOfResults();
 
-        Assert.assertTrue(actualNumberOfResults > 1000);
+        Assert.assertTrue("amount of result is less than " + testExpectedNumber, actualNumberOfResults > testExpectedNumber);
     }
 }
