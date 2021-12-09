@@ -19,14 +19,26 @@ public class UITestListener extends TestListenerAdapter {
     private final Logger LOGGER = Logger.getLogger(UITestListener.class.getName());
 
     @Override
+    public void onTestStart(ITestResult result) {
+        super.onTestStart(result);
+        LOGGER.log(Level.INFO, "---------" + result.getTestClass().getName());
+    }
+
+    @Override
     public void onTestFailure(ITestResult tr) {
         LOGGER.log(Level.WARNING,
                 "FAILED: " + tr.getStartMillis() + " " + tr.getEndMillis() + " " + tr.getStatus());
 
-        this.driver = (WebDriver) tr.getTestContext().getAttribute("driver");
-        TakesScreenshot screenshot = ((TakesScreenshot) driver);
-        File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+        Object contextObject = tr.getTestContext().getAttribute("driver");
+
+        if (driver != null) takeScreenShot(tr, contextObject);
+    }
+
+    private void takeScreenShot(ITestResult tr, Object driver) {
         String path = buildFilePath(tr);
+        this.driver = (WebDriver) driver;
+        TakesScreenshot screenshot = (TakesScreenshot) this.driver;
+        File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
         Utils.copyFile(screenshotFile, new File(path));
 
         LOGGER.log(Level.INFO, "Screenshot been saved to this location: " + path);

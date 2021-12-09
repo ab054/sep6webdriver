@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
 @Listeners(UITestListener.class)
 public class TestBase {
 
@@ -22,6 +24,8 @@ public class TestBase {
             driver = new ChromeDriver();
         }
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
         context.setAttribute("driver", driver);
     }
 
@@ -29,7 +33,6 @@ public class TestBase {
     public void testMethodTearDown() {
         driver.quit();
     }
-
 
     @BeforeSuite
     public void suiteSetup() {
@@ -48,14 +51,6 @@ public class TestBase {
     @AfterSuite
     public void afterSuite() {
 
-    }
-
-    @DataProvider(name = "strings for query")
-    public Object[][] createData1() {
-        return new Object[][]{
-                {"Portnov Computer School"},
-                {"Portnov School"},
-        };
     }
 
 }

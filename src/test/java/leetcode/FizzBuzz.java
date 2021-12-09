@@ -18,7 +18,6 @@ public class FizzBuzz {
 
     }
 
-
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<>();
 
